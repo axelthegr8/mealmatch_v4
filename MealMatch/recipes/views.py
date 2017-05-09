@@ -86,7 +86,7 @@ def retrieveRecipes(request):
 
     if request.method == "GET":
         start_index = request.path.rfind("/")
-        raw_input = request.path[start_index:-1].split("&") #splits into array based on &, title() makes first letters capitalized (to be reomved?)
+        raw_input = request.path[start_index+1:-1].split("&") #splits into array based on &, title() makes first letters capitalized (to be reomved?)
 
         input = []
         for element in raw_input:
