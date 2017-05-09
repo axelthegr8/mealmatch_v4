@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href='{% static "css/index.css"%}'>
+<div class="startPage">
+  <div class="w3-row">
+<div class="col-sm-6 col-sm-offset-3 w3-padding-64 w3-center">
+<form method="post" action=".">
+  {% csrf_token %} 
+  {{ form|crispy}}
+
+  <input type="submit" value="{% trans 'Log in' %}" />
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+</div>
+</div>
+</div>
+  {% endblock %}

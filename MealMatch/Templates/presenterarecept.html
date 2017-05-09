@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+
+<link rel="stylesheet" type="text/css" href='{% static "css/presenterarecept.css"%}'>
+<link rel="stylesheet" type="text/css" href='{% static "css/bootstrap_style.css"%}'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+<!--<link rel="stylesheet" href="font-awesome.min.css">-->
+
+
+<style>
+    .star-icon.half:before {
+        color: black;
+        content: '\2605'; /* Full star in UTF8 */
+        position: absolute;
+        left: 0;
+        width: 50%;
+        overflow: hidden;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .star-icon.full:before {
+        color: black;
+        content: '\2605'; /* Full star in UTF8 */
+        position: absolute;
+        left: 0;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .star-icon {
+        color: #ddd;
+        font-size: 34px;
+        position: relative;
+    }
+
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Raleway", Arial, Helvetica, sans-serif
+    }
+
+    .mySlides {
+        display: none
+    }
+</style>
+<script>
+    var rating = "{{rating}}";
+    var id = "{{recipe.id}}";
+</script>
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="background" onload="star_rating(rating,id)">
+
+
+
+    <div id="main" class="container text-left container_about">
+
+
+        <!-- first grid -->
+
+        <div class="w3-row">
+            <div class="w3-half container w3-left w3-margin-bottom" style="height:auto">
+                <h3>{{recipe.title}}</h3>
+                <div class=" row">
+
+
+             <form class="rating w3-margin-left" id="ratingdiv" >
+                    <input type="radio" id="st1" value="5"name ="star" class="stars" checked=false />
+                    <label for="st1"></label>
+                    <input type="radio" id="st2" value="4" name ="star" class="stars"checked=false />
+                    <label for="st2"></label>
+                    <input type="radio" id="st3" value="3" name ="star" class="stars" checked=false/>
+                    <label for="st3"></label>
+                    <input type="radio" id="st4" value="2" name ="star" class="stars" checked=false/>
+                    <label for="st4"></label>
+                    <input type="radio" id="st5" value="1"name ="star" class="stars"checked=false/>
+                    <label for="st5"></label>
+             </form>
+
+
+
+                    <div class="rating w3-margin-left">
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span>☆</span>
+                    </div>
+                    <div class="w3-half">
+                        <i class="fa fa-clock-o fa-2x w3-margin" aria-hidden="true"></i>
+                        {{recipe.time}}
+                    </div>
+
+                    <div class="w3-half">
+                        <i class="fa fa-cutlery fa-2x w3-margin" aria-hidden="true"></i>
+                        {{recipe.servings}}
+                    </div>
+
+
+
+                    <div class="white">
+                        <div class="container text-left container_about">
+
+                            <hr>
+                            <h5><strong>Tags</strong></h5>
+                            {%for tag in recipe.tags%}
+                            <p id="tag">{{tag}}</p>
+                            {%endfor%}
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="w3-half white w3-center w3-margin-bottom" style="height:auto">
+
+
+                <img src={{recipe.image}}
+                     style="width:auto; max-height: 90%; max-width:100%; border-radius:0.1em; box-shadow: 0px 0px 20px #888888;">
+
+
+            </div>
+        </div>
+
+        <!-- Slideshow Header -->
+    </div>
+</div>
+
+<div class="background">
+    <div class="w3-padding" style="background-color: rgb(169,64,4);">
+    </div>
+</div>
+
+<div id="instructions" class="bg-1">
+    <div class="container text-center container_about bg-1">
+
+        <div class="col-sm-4 text-left">
+
+            <h5><strong>Ingredients</strong></h5>
+            <div class="w3-row w3-large">
+                <div class="w3-col s12">
+                    {% for ingredient in recipe.ingredients_complete %}
+                    <p>{{ingredient}}</p>
+                    {%endfor%}
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-8 text-left">
+            <h5><strong>Preparation</strong></h5>
+
+            {% for direction in recipe.directions %}
+            <div class="w3-row w3-large">
+                <p>{{forloop.counter}}. {{direction}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+<div id="" class="background">
+    <div id="" class="background">
+        <div class="w3-padding" style="background-color: rgb(169,64,4);">
+        </div>
+    </div>
+
+
+    {% if user.is_authenticated %}
+    <div id="" class="background">
+        <div id="" class="container container_about">
+
+
+            <h3 class="w3-padding-24 w3-text-dark-grey">Make your comments here
+                {{mongouser.full_name}}:</h3>
+
+            <form class="ing_form" action="/recipes/presenterarecept/{{recipe.id}}" method="POST">
+                {% csrf_token %}
+
+
+
+                    {{commentform}}
+
+
+                <br>
+                  <div class="g-recaptcha" data-sitekey="6LfO9h8UAAAAAJdQ3B0NVSHsVrhFAPZtHhGjFGsn"></div>
+                <input type="submit" class="btn " id="comment_button" value="Post comment">
+
+
+
+
+            </form>
+
+            {%endif%}
+
+            <hr>
+            <div class="w3-margin">
+                <h3 class="w3-padding-24 w3-text-dark-grey">Comments</h3>
+                {%for comment in comments %}
+                <img src="{{comment.picture}}" alt="Avatar" class="w3-left w3-margin-right" style="height:80px">
+                <p><span class="w3-large w3-margin-right">{{comment.username}}</span> <span
+                        class="w3-right">{{comment.created_at}}</span></p>
+                <p>{{comment.body}}</p>
+                <hr>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+    {% endblock %}

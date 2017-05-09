@@ -1,0 +1,15 @@
+<form action=/account_functions/update_table/ method="POST">
+{% csrf_token %}
+    <label for="old_name">old name: (highly secure server)</label>
+    <input id="old_name" type="text" name="old_name" value="{{ current_name }}">
+
+    <label for="new_name">new name: </label>
+    <input id="new_name" type="text" name="new_name" value="{{ current_pwd }}">
+    <input type="submit" value="OK">
+</form>'
+<form action=/account_functions/user_logout/ method="POST">
+    {% csrf_token %}
+    <label for="log_out">Logout: </label>
+
+    <input id = "log_out" type="submit" value="OK">
+</form>
