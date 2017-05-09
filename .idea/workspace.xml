@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53ceb2a8-0661-450a-b3ee-164c51c93670" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MealMatch/MealMatch/settings.py" afterPath="$PROJECT_DIR$/MealMatch/MealMatch/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +17,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MealMatch/MealMatch/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="262" column="1" lean-forward="true" selection-start-line="262" selection-start-column="1" selection-end-line="262" selection-end-column="1" />
+            <state relative-caret-position="312">
+              <caret line="184" column="56" lean-forward="false" selection-start-line="184" selection-start-column="56" selection-end-line="184" selection-end-column="56" />
               <folding>
                 <element signature="e#308#317#0" expanded="true" />
               </folding>
@@ -338,8 +337,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MealMatch/MealMatch/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="262" column="1" lean-forward="true" selection-start-line="262" selection-start-column="1" selection-end-line="262" selection-end-column="1" />
+        <state relative-caret-position="312">
+          <caret line="184" column="56" lean-forward="false" selection-start-line="184" selection-start-column="56" selection-end-line="184" selection-end-column="56" />
           <folding>
             <element signature="e#308#317#0" expanded="true" />
           </folding>
