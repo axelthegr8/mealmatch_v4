@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic',
+
 
 
 
@@ -264,7 +264,7 @@ STATICFILES_DIRS = (
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
 SOCIAL_AUTH_FACEBOOK_KEY = '765337320295594'  # App ID
@@ -287,12 +287,12 @@ LOGIN_REDIRECT_URL = "/"
 
 
 # For deployment #
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-ALLOWED_HOSTS = ['*']
-
-DEBUG = False
+#import dj_database_url
+#DATABASES['default'] = dj_database_url.config()
+#
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#
+#ALLOWED_HOSTS = ['*']
+#
+#DEBUG = False
 
