@@ -121,10 +121,12 @@ class recipe(DynamicDocument):
 class mapped_id(Document):
     id = ObjectIdField(primary_key=True)
 
+
 class mapped(Document):
     value = ListField(ObjectIdField(primary_key=True))
     #value = ListField(EmbeddedDocumentField('mapped_id'))
     #value = DictField() <--- restore this to get working queryset
+    title = StringField()
     meta = {'queryset_class': mappedQuerysSet}  # Defines a custom queryet
 
 class food_ref(Document):
