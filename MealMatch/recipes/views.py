@@ -85,13 +85,15 @@ def presentRecipe(request):
 def retrieveRecipes(request):
 
     if request.method == "GET":
-        raw_input = request.path[17:-1].split("&") #splits into array based on &, title() makes first letters capitalized (to be reomved?)
+        start_index = request.path.rfind("/")
+        raw_input = request.path[start_index:-1].split("&") #splits into array based on &, title() makes first letters capitalized (to be reomved?)
+
         input = []
         for element in raw_input:
             input.append(sanitize(element)) #Sanitizses !! IMPORTANT !!
         # Now that the input is cleaned, we can implement elasticsearch/fuzzy search on food_ref t
 
-        query_mapped = mapped.objects(id__in=input).only('value').key_frequency()#queries from the mapped colletion and does a key_frequency check
+        query_mapped = mapped.objects(title__in=input).only('value').key_frequency()#queries from the mapped colletion and does a key_frequency check
         sorted_dict = OrderedDict(reversed(sorted(query_mapped.items(), key=lambda x: (x[1]['frequency']/x[1]['ing_count']*x[1]['frequency'], x[1]['clicks'], x[1]['rating'])))) #Sorts list based on frequency
         dictlist = []
         for key, value in sorted_dict.items():
