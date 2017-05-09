@@ -250,19 +250,19 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-STATIC_URL = '/static/'
-
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    #'/static/css/',
-# ]
-]
-
+## Static files (CSS, JavaScript, Images)
+## https://docs.djangoproject.com/en/1.9/howto/static-files/
+#
+#STATIC_URL = '/static/'
+#
+#
+#
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, "static"),
+#    #'/static/css/',
+## ]
+#]
+#
 
 
 SOCIAL_AUTH_FACEBOOK_KEY = '765337320295594'  # App ID
