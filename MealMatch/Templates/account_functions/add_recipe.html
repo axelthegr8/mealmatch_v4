@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href='{% static "css/add_recipe.css"%}'>
+<link rel="stylesheet" type="text/css" href='{% static "css/recipes.css"%}'>
+<link rel="stylesheet" type="text/css" href='{% static "css/index.css"%}'>
+<div class="startPage" style="padding-top:0;">
+<div class="container-fluid">
+    <h2>Add new recipe</h2>
+
+
+
+
+           <form action=/account_functions/add_recipe/ method="POST">
+    {% csrf_token %}
+
+   {{ form|crispy }}
+
+            <input type="submit" value="Upload your recipe">
+    </form>
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}

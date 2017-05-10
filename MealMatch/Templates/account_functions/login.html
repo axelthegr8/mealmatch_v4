@@ -1,0 +1,27 @@
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load staticfiles %}
+
+
+
+    <link rel="stylesheet" type="text/css" href='{% static "css/recipes.css"%}'>
+
+
+
+           <form action=/account_functions/login/ method="POST">
+    {% csrf_token %}
+
+   {{ form|crispy }}
+
+            <input type="submit" value="OK">
+    </form>
+
+
+
+
+
+
+
+
+{% endblock %}

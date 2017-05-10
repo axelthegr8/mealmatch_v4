@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+
+<link rel="stylesheet" type="text/css" href='{% static "css/index.css"%}'>
+        <div class="startPage1">
+            <div class="container_logo container-fluid w3-hide-small" style="max-width:700px; padding-top: 3em;">
+
+                <img src="../../static/images/logo.png" alt="Logo" width="100%" height="auto">
+                 <h2 id="slogan">Let's find your perfect match!</h2>
+
+
+            </div>
+            <div class="container-fluid startPageContainer">
+
+
+                <div class="container_searchbar">
+
+                    <form class="search_bar" action="/recipes/" method="POST">
+
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" id="ingredient-form" class="form-control"  size="50" placeholder="Add ingredient..." maxlength="30" required >
+
+                                <button class="button" id="searchbar_plus" value="Add" onclick = "addItem()">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+
+                                <!--<<button type="button" class="btn btn-info dropdown-toggle" id="alternatives" data-toggle="dropdown">Alternatives
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                    <li><a href="#">Vegetarian</a></li>
+                                    <li><a href="#">Gluten free</a></li>
+                                    <li><a href="#">Laktos free</a></li>
+                            </ul>-->
+                        </div>
+                    </form>
+                </div>
+            <div class="container_ingredients">
+
+
+                <form class = "ing_form" action="/recipes/recipes/" method="GET" >
+                    {% csrf_token %}
+                    <div class="center_button color-button">
+
+                            <input type="submit" class="btn w3-ripple matchbutton w3-blue-grey" id="matchme" value = "Match me(al)" onsubmit ="setURL()">
+
+
+
+
+                    </div>
+
+
+
+                <div class="rows_ingredients">
+
+
+
+                    <div class="column_ingredients col-sm-11">
+
+
+
+                            <div class="container">
+                                <ol class="list-group" id="ingredients" style="font-size: 1.7em";>
+
+
+                                </ol>
+
+
+
+
+                            </div>
+
+
+
+
+                    </div>
+                    <!--<div class="column_remove col-sm-1">
+
+                        </div>-->
+
+                </div>
+
+                </form>
+            </div>
+            </div>
+
+
+        </div>
+
+
+
+
+{% endblock %}

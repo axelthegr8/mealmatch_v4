@@ -1,0 +1,151 @@
+@font-face {
+    font-family: 'RammettoOne'; /*a name to be used later*/
+    src: url('../font/RammettoOne-Regular.ttf'); /*URL to font*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:  "Raleway", sans-serif !important;
+}
+
+.pantryPage {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("../images/recipes-background.jpeg");
+    background-size: cover;
+    padding-top: 50px;
+    height: 96%;
+}
+
+#ingredient-form{
+    color:black;
+
+}
+.removeButton_pantry{
+    color:black;
+    font-weight: bold;
+    height: auto;
+}
+#removeButton{
+    color:black;
+    font-weight: bold;
+}
+#myBtn{
+    margin-left:40%;
+    width: 20%;
+    padding: 1%;
+    margin-top:1%;
+    margin-bottom:1%;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+
+
+}
+#added{
+    padding: 1%;
+    font-weight: bold;
+    margin: 0%;
+
+}
+#slogan {
+    font-family: "RammettoOne" !important;
+    font-size: 25px;
+    color: rgb(75, 75, 75)
+}
+
+
+
+@media screen and (max-width: 700px) {
+    .w3-card {
+        background-color: rgba(255, 255, 255, 0.5);
+
+        max-height: 100%;
+        font-size: 12px !important;
+}
+
+    h2 {
+        font-size: 21px !important;
+        font-weight:normal !important;
+    }
+
+    .pantryPage {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("../images/recipes-background.jpeg");
+        background-size: cover;
+        padding-top: 50px;
+        height: 95%;
+        padding-bottom: 0em;
+
+
+    }
+
+    .header{
+        max-height: 0px !important;
+
+
+    }
+
+   #slogan {
+    font-family: "RammettoOne" !important;
+    font-size: 12px !important;
+    color: rgb(75, 75, 75);
+    }
+
+   #added{
+
+        font-size: 21px !important;
+        font-weight: 700;
+
+
+   }
+
+}
+
+.container_logo {
+    height: 15%;
+}
+
+
+
+.pantry-container {
+    width:100%;
+    height: 100%;
+    max-width:700px;
+}
+
+.w3-card {
+    background-color: rgba(255, 255, 255, 0.5);
+    max-height: 100%;
+    font-family: "Raleway", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+
+}
+.fa-plus-circle{
+    color: green;
+
+}
+
+.glyphicon-plus {
+    color: green;
+
+    padding-top: 0.7%;
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+#searchbar_plus_pantry {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    padding-top: 0.6%;
+    padding-left: 0.5%
+}
+.rows_ingredients{
+    overflow: auto;
+    max-height: 70%
+}
+
+.header{
+    max-height: 15% !important;
+
+
+}
