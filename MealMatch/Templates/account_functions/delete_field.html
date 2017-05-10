@@ -1,0 +1,9 @@
+<form action=/account_functions/delete_field/ method="POST">
+{% csrf_token %}
+    <label for="your_name">Your name: (highly secure server)</label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+
+    <label for="pwd">Pwd: </label>
+    <input id="pwd" type="text" name="pwd" value="{{ current_pwd }}">
+    <input type="submit" value="OK">
+</form>

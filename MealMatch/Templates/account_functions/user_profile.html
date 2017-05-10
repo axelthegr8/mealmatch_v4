@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top w3-padding-64" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+
+    <!-- Left Column -->
+    <div class="w3-third">
+
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src={{mongouser.picture}} style="width:100%" alt="Avatar">
+
+        </div>
+        <div class="w3-container w3-margin-top">
+          <p><i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.username}}</p>
+          <hr>
+               <p data-toggle="collapse" data-target="#demo" class="w3-large"><b><i class="fa fa-cutlery fa-fw w3-margin-right w3-text-teal"></i>Pantry</b></p>
+  <div id="demo" class="collapse">
+    {%for item in mongouser.Pantry%}
+            <p>{{item}}</p>
+            {% endfor %}
+      <form action="my_pantry/">
+      <button type="submit" class="btn btn-primary btn-block w3-margin-bottom" >Edit</button>
+          </form>
+  </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+
+      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+          <h1 data-toggle="collapse" data-target="#profile" class="w3-large"><b><i class="fa fa-cog fa-fw w3-margin-right w3-text-teal"></i>Change profile settings</b></h1>
+          <div id="profile" class="collapse">
+
+          </div>
+
+
+        </div>
+
+
+      <div class="w3-container w3-card-2 w3-white">
+          <a href="/accounts/password/change"><h1 class="w3-large"><b><i class="fa fa-key fa-fw w3-margin-right w3-text-teal"></i>Change password</b></h1></a>
+      </div>
+
+    <!-- End Right Column -->
+    </div>
+
+  <!-- End Grid -->
+  </div>
+
+  <!-- End Page Container -->
+</div>
+
+ {% endblock %}

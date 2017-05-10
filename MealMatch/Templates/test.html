@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href='{% static "css/presenterarecept.css"%}'>
+<link rel="stylesheet" type="text/css" href='{% static "css/bootstrap_style.css"%}'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<style>
+    .star-icon.half:before {
+        color: black;
+        content: '\2605'; /* Full star in UTF8 */
+        position: absolute;
+        left: 0;
+        width: 50%;
+        overflow: hidden;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .star-icon.full:before {
+        color: black;
+        content: '\2605'; /* Full star in UTF8 */
+        position: absolute;
+        left: 0;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .star-icon {
+        color: #ddd;
+        font-size: 34px;
+        position: relative;
+    }
+
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Raleway", Arial, Helvetica, sans-serif
+    }
+
+    .mySlides {
+        display: none
+    }
+</style>
+
+
+<body class="w3-content w3-border-left w3-border-right">
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-white" style="margin-left:100px; margin-top:80px; margin-right: 100px;">
+
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top:80px"></div>
+
+    <!-- Slideshow Header -->
+    <div class="w3-container" id="apartment">
+        <h3 class="w3-text title_text">{{recipe.title}}</h3>
+    </div>
+
+
+    <div class="w3-row-padding w3-large">
+        <div class="w3-half">
+            <img src={{recipe.image}} style="width:100%;margin-bottom:-6px">
+            <div class="w3-row w3-large">
+
+                <div class="w3-col s3">
+                    <i class="fa fa-heart w3-margin" aria-hidden="true"></i>
+                </div>
+                <div class="w3-col s3">
+                    <i class="fa fa-share-alt w3-margin" aria-hidden="true"></i>
+                </div>
+                <div class="w3-col s3">
+                    <i class="fa fa-flag w3-margin" aria-hidden="true"></i>
+                </div>
+                <div class="w3-col s3">
+                    <i class="fa fa-comment w3-margin" aria-hidden="true"></i>
+                </div>
+                <div class="w3-half">
+                    <i class="fa fa-clock-o fa-2x w3-margin" aria-hidden="true"></i>
+                    {{recipe.time}}
+                </div>
+
+                <div class="w3-half">
+                    <i class="fa fa-cutlery fa-2x w3-margin" aria-hidden="true"></i>
+                    {{recipe.servings}}
+                </div>
+                <div class="rating w3-margin-left">
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="w3-third">
+
+
+            <h5><strong>Ingredients</strong></h5>
+            <div class="w3-row w3-large">
+                <div class="w3-col s12">
+                    {% for ingredient in recipe.ingredients_complete %}
+                    <p>{{ingredient}}</p>
+                    {%endfor%}
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="w3-margin">
+
+        <h5><strong>Preparation</strong></h5>
+        <div class="w3-row w3-large">
+            {% for direction in recipe.directions %}
+            <div class="w3-row w3-large">
+
+
+                <p>{{forloop.counter}}. {{direction}}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <hr>
+
+        <h5><strong>Tags</strong></h5>
+        {%for tag in recipe.tags%}
+        <p>{{tag}}</p>
+        {%endfor%}
+        <hr>
+
+    </div>
+
+
+    {% if user.is_authenticated %}
+    <div class="w3-margin">
+        <h3 class="w3-padding-24 w3-text-dark-grey">Make your comments here {{mongouser.full_name}}:</h3>
+        <form class="ing_form" action="/recipes/presenterarecept/{{recipe.id}}" method="POST">
+            {% csrf_token %}
+            {{commentform}}
+            <input type="submit" class="btn" id="comment_button" value="Post comment">
+        </form>
+    </div>
+    {%endif%}
+
+    <hr>
+    <div class="w3-margin">
+        <h3 class="w3-padding-24 w3-text-dark-grey">Comments</h3>
+        {%for comment in comments %}
+        <img src="{{comment.picture}}" alt="Avatar" class="w3-left w3-margin-right" style="height:80px">
+        <p><span class="w3-large w3-margin-right">{{comment.username}}</span> <span class="w3-right">{{comment.created_at}}</span>
+        </p>
+        <p>{{comment.body}}</p>
+        <hr>
+        {% endfor %}
+
+    </div>
+
+</div>
+</div>
+</body>
+
+
+{% endblock %}
